@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200;
+  }
+  
+  .metric-card {
+    @apply card p-6;
+  }
+  
+  .status-healthy {
+    @apply text-green-600 bg-green-50;
+  }
+  
+  .status-warning {
+    @apply text-yellow-600 bg-yellow-50;
+  }
+  
+  .status-error {
+    @apply text-red-600 bg-red-50;
+  }
+} 
