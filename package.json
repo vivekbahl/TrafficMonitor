@@ -7,20 +7,27 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "serve -s dist -l 8080",
+    "build:prod": "NODE_ENV=production npm run build",
+    "deploy:dev": "cd terraform && terraform apply -var-file=environments/dev.tfvars",
+    "deploy:prod": "cd terraform && terraform apply -var-file=environments/prod.tfvars",
+    "tf:plan:dev": "cd terraform && terraform plan -var-file=environments/dev.tfvars",
+    "tf:plan:prod": "cd terraform && terraform plan -var-file=environments/prod.tfvars"
   },
   "dependencies": {
-    "@azure/monitor-query": "^1.1.0",
-    "@azure/identity": "^3.4.0",
     "@azure/arm-monitor": "^7.0.0",
     "@azure/arm-resources": "^5.0.0",
+    "@azure/identity": "^3.4.0",
+    "@azure/monitor-query": "^1.1.0",
+    "@headlessui/react": "^1.7.15",
+    "clsx": "^1.2.0",
+    "date-fns": "^2.29.0",
+    "lucide-react": "^0.263.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "recharts": "^2.7.0",
-    "lucide-react": "^0.263.0",
-    "clsx": "^1.2.0",
-    "date-fns": "^2.29.0",
-    "@headlessui/react": "^1.7.15"
+    "serve": "^14.2.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
@@ -37,4 +44,4 @@
     "typescript": "^5.2.2",
     "vite": "^4.5.0"
   }
-} 
+}

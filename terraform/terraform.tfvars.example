@@ -1,0 +1,29 @@
+# Copy this file to terraform.tfvars and fill in your values
+
+# Basic Configuration
+resource_group_name = "rg-azure-traffic-monitor-prod"
+app_name           = "azure-traffic-monitor-prod"
+location           = "East US"
+environment        = "production"
+app_service_sku    = "B2"
+
+# Azure Authentication (get these from your Azure AD App Registration)
+azure_client_id       = "your-azure-client-id"
+azure_tenant_id       = "your-azure-tenant-id"
+azure_subscription_id = "your-azure-subscription-id"
+
+# GitHub Repository (for continuous deployment)
+github_repo_url = "https://github.com/your-username/azure-traffic-monitor"
+github_branch   = "main"
+
+# Optional: Custom Domain
+custom_domain = "monitor.yourdomain.com"
+
+# Tags
+common_tags = {
+  Project     = "Azure Traffic Monitor"
+  Environment = "production"
+  ManagedBy   = "Terraform"
+  Owner       = "DevOps Team"
+  CostCenter  = "IT-Infrastructure"
+} 
