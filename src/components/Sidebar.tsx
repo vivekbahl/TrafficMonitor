@@ -17,7 +17,8 @@ const Sidebar: React.FC<SidebarProps> = ({
   const mockSubscriptions = [
     'Production-Subscription-001',
     'Development-Subscription-002',
-    'Testing-Subscription-003'
+    'Testing-Subscription-003',
+    'd6015563-af1d-45a6-98c1-5c3169cb9573'
   ]
 
   const navigationItems = [

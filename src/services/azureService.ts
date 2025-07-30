@@ -1,5 +1,6 @@
-import { DefaultAzureCredential } from '@azure/identity'
+import { InteractiveBrowserCredential } from '@azure/identity'
 import { ResourceManagementClient } from '@azure/arm-resources'
+
 
 export interface AzureMetric {
   name: string
@@ -7,6 +8,7 @@ export interface AzureMetric {
   unit: string
   timestamp: Date
 }
+
 
 export interface AzureResource {
   id: string
@@ -18,11 +20,15 @@ export interface AzureResource {
 }
 
 export class AzureService {
-  private credential: DefaultAzureCredential
+  private credential: InteractiveBrowserCredential
   private resourceClient: ResourceManagementClient | null = null
 
   constructor() {
-    this.credential = new DefaultAzureCredential()
+    this.credential = new InteractiveBrowserCredential({
+      clientId: import.meta.env.VITE_AZURE_CLIENT_ID,
+      tenantId: import.meta.env.VITE_AZURE_TENANT_ID,
+      redirectUri: window.location.origin,
+    })
   }
 
   async initializeResourceClient(subscriptionId: string) {
@@ -38,7 +44,8 @@ export class AzureService {
       return [
         'Production-Subscription-001',
         'Development-Subscription-002', 
-        'Testing-Subscription-003'
+        'Testing-Subscription-003',
+        'd6015563-af1d-45a6-98c1-5c3169cb9573'
       ]
     } catch (error) {
       console.error('Error fetching subscriptions:', error)
@@ -167,4 +174,4 @@ export class AzureService {
 }
 
 // Singleton instance
-export const azureService = new AzureService() 
+export const azureService = new AzureService()
